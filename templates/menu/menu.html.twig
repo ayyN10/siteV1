@@ -1,29 +1,38 @@
-<div class="flex items-center justify-center w-full absolute top-0 left-0 gap-5 mt-10 menu" {{ stimulus_controller('menu') }}>
-    <div class="flex relative justify-center items-center" id="me">
+<div class="flex items-center justify-center w-full absolute top-0 left-0 gap-5 mt-3 menu" {{ stimulus_controller('menu') }}>
+    <div class="flex relative justify-center items-center active" id="me">
         {% include 'common/spinner.html.twig' %}
-        <div class="flex justify-center items-center w-[80px] h-[80px] border border-white rounded-full absolute">
-            <img src="{{ asset('images/mimoji_hugo.svg') }}" alt="Moi" class="w-20 h-20 object-cover relative top-[-3px]"/>
+        <div class="flex justify-center items-center w-[80px] h-[80px] border border-white rounded-full absolute bg-black z-10">
+            <img src="{{ asset('images/hugo.png') }}" alt="Moi" class="w-20 h-20 object-cover relative top-[-3px]"/>
         </div>
         <div class="text-container absolute">
-            <p class="text-white text-lg font-semibold"><span>A</span><span>b</span><span>o</span><span>u</span><span>t</span></p>
+            <p class="text-white text-lg font-semibold"><span>A</span><span>B</span><span>O</span><span>U</span><span>T</span></p>
         </div>
     </div>
-    <div class="flex relative justify-center items-center overflow-hidden" id="about">
+    <div class="flex relative justify-center items-center" id="about">
         {% include 'common/spinner.html.twig' %}
-        <div class="flex justify-center items-center w-[80px] h-[80px] border border-white rounded-full absolute overflow-hidden">
+        <div class="flex justify-center items-center w-[80px] h-[80px] border border-white rounded-full absolute bg-black z-10">
             <img src="{{ asset('images/research-paper.svg') }}" alt="Moi" class="w-12 h-12 object-cover"/>
+        </div>
+        <div class="text-container absolute">
+            <p class="text-white text-lg font-semibold"><span>S</span><span>K</span><span>I</span><span>L</span><span>L</span><span>S</span></p>
         </div>
     </div>
     <div class="flex relative justify-center items-center" id="project">
         {% include 'common/spinner.html.twig' %}
-        <div class="flex justify-center items-center w-[80px] h-[80px] border border-white rounded-full absolute overflow-hidden">
+        <div class="flex justify-center items-center w-[80px] h-[80px] border border-white rounded-full absolute bg-black z-10">
             <img src="{{ asset('images/dualsense.svg') }}" alt="Moi" class="w-16 h-16 object-cover"/>
+        </div>
+        <div class="text-container absolute">
+            <p class="text-white text-lg font-semibold"><span>P</span><span>R</span><span>O</span><span>J</span><span>E</span><span>C</span><span>T</span><span>S</span></p>
         </div>
     </div>
     <div class="flex relative justify-center items-center" id="contact">
         {% include 'common/spinner.html.twig' %}
-        <div class="flex justify-center items-center w-[80px] h-[80px] border border-white rounded-full absolute overflow-hidden">
+        <div class="flex justify-center items-center w-[80px] h-[80px] border border-white rounded-full absolute bg-black z-10">
             <img src="{{ asset('images/wifi.svg') }}" alt="Moi" class="w-12 h-12 object-cover"/>
+        </div>
+        <div class="text-container absolute">
+            <p class="text-white text-lg font-semibold"><span>C</span><span>O</span><span>N</span><span>T</span><span>A</span><span>C</span><span>T</span></p>
         </div>
     </div>
 </div>
