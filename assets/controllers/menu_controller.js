@@ -4,11 +4,50 @@ import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import { SplitText } from "../import/SplitText.js";
 
 export default class extends Controller {
+    sectionActive;
+
     connect() {
         gsap.registerPlugin(MotionPathPlugin, SplitText);
 
         const items = document.querySelectorAll(".menu > div");
 
+        this.menuText(items);
+        this.clickMenu(items);
+        this.menuActive(items);
+    }
+
+    clickMenu(items){
+        items.forEach((item) => {
+            item.addEventListener("click", () => {
+                items.forEach((item) => {
+                    item.classList.remove("active");
+                });
+                item.classList.add("active");
+            });
+        });
+    }
+
+    menuActive(items) {
+        items.forEach((item) => {
+            item.addEventListener("click", () => {
+                console.log(item);
+
+                if (item.classList.contains("active")) {
+                    // Vérifie si l'élément section existe avant d'y accéder
+                    const section = document.querySelector("#section-" + item.id);
+                    if (section) {
+                        this.sectionActive?.classList.replace("translate-y-0", "translate-y-full"); // Cache l'ancienne section
+                        this.sectionActive = section;
+                        this.sectionActive.classList.replace("translate-y-full", "translate-y-0"); // Affiche la nouvelle
+                    }
+                }
+            });
+        });
+        console.log(items);
+    }
+
+
+    menuText(items){
         items.forEach((item) => {
             const textContainer = item.querySelector(".text-container");
             const textElement = textContainer?.querySelector("p");

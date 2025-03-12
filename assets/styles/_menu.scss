@@ -1,12 +1,15 @@
-.spinner {
-    animation: Rotate 2.4s both infinite linear;
+.active {
+    .spinner {
+        animation: Rotate 2.4s both infinite linear;
+    }
+    .path {
+        animation: DrawLine 1.6s linear;
+        fill: none;
+        stroke: white;
+        stroke-width: 50;
+    }
 }
-.path {
-    animation: DrawLine 1.6s both infinite alternate linear;
-    fill: none;
-    stroke: white;
-    stroke-width: 50;
-}
+
 
 
 
