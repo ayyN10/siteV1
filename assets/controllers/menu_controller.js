@@ -11,9 +11,29 @@ export default class extends Controller {
 
         const items = document.querySelectorAll(".menu > div");
 
+        this.showMenu(items);
         this.menuText(items);
         this.clickMenu(items);
         this.menuActive(items);
+    }
+
+    showMenu(items){
+        items.forEach(menuBtn => {
+            menuBtn.addEventListener("mouseenter", () => {
+                console.log(menuBtn);
+                items.forEach(item => {
+                   item.classList.replace("translate-x-52", "translate-x-0");
+                });
+            });
+
+            document.querySelector(".menu").addEventListener("mouseleave", () => {
+                items.forEach(item => {
+                    if (!item.classList.contains("active")) {
+                        item.classList.replace("translate-x-0", "translate-x-52");
+                    }
+                });
+            });
+        });
     }
 
     clickMenu(items){
@@ -38,6 +58,7 @@ export default class extends Controller {
                     if (section) {
                         this.sectionActive?.classList.replace("translate-y-0", "translate-y-full"); // Cache l'ancienne section
                         this.sectionActive = section;
+                        this.sectionActive.classList.add("show"); // Affiche la nouvelle
                         this.sectionActive.classList.replace("translate-y-full", "translate-y-0"); // Affiche la nouvelle
                     }
                 }
