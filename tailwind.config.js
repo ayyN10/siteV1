@@ -3,7 +3,7 @@ module.exports = {
   content: [
     'templates/**/*.html.twig',
     'templates/*.html.twig',
-    'assets/js/**/*.js',
+    'assets/controllers/*.js',
   ],
   theme: {
     extend: {},

@@ -12,12 +12,17 @@
         {{ encore_entry_script_tags('app') }}
     {% endblock %}
 </head>
-<body class="overflow-hidden">
+<body class="overflow-hidden" {{ stimulus_controller('base') }}>
 {% block content %}
     {# templates/home.html.twig #}
-    <iframe style="width: 100%; height: 100%; position: fixed; z-index: 1; border: 0;" class="fluids_back z-10"
+    <div class="loader fixed h-full w-full z-50 opacity-100 transition-opacity bg-black">
+        <div class="flex justify-center items-center h-full w-full cursor-pointer" id="button-start">
+            <img src="{{ asset('images/start.svg') }}" alt="button start" class="w-72 h-72 "/>
+        </div>
+    </div>
+    <iframe id="xmb-iframe" style="width: 100%; height: 100%; position: fixed; z-index: 1; border: 0;" class="fluids_back z-10"
             src="xmb"></iframe>
-    <section class="h-screen w-screen overflow-hidden relative z-50">
+    <section class="h-screen w-screen overflow-hidden relative z-40">
         {% include 'menu/menu.html.twig' %}
         {% include 'blocs/me.html.twig' %}
         {% include 'blocs/skills.html.twig' %}
