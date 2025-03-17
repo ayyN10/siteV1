@@ -33,6 +33,7 @@
     },
     "dependencies": {
         "@symfony/stimulus-bundle": "^2.23.0",
-        "gsap": "^3.12.7"
+        "gsap": "^3.12.7",
+        "pixi.js": "^8.8.1"
     }
 }

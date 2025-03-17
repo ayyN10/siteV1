@@ -11,7 +11,7 @@ export default class extends Controller {
                 loader.classList.add("pointer-events-none");
                 loader.classList.replace("opacity-100", "opacity-0");
                 setTimeout(() => {
-                    document.querySelector("#section-me").classList.replace("translate-y-full", "translate-y-0");
+                    document.querySelector("#section-me").classList.add("show");
                 }, 2000);
             },
             { once: true }

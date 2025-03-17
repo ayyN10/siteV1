@@ -2,122 +2,180 @@ import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
     connect() {
-        var width = window.innerWidth;
-        var height = window.innerHeight;
+        // Create an array to store our particles
+        var particles = [];
 
-// create a new instance of a pixi stage
-        var stage = new PIXI.Stage(0x0, true);
+// The amount of particles to render
+        var particleCount = 30;
 
-// create a renderer instance
-        var renderer = PIXI.autoDetectRenderer(width, height, {
-            transparent: true
-        });
+// The maximum velocity in each direction
+        var maxVelocity = 2;
 
-// add the renderer view element to the DOM
-        document.body.appendChild(renderer.view);
+// The target frames per second (how often do we want to update / redraw the scene)
+        var targetFPS = 33;
 
-// smoke shader
-        var uniforms = {};
-        uniforms.resolution = {
-            type: '2f',
-            value: {
-                x: width,
-                y: height
+    // Set the dimensions of the canvas as variables so they can be used.
+        var canvasWidth = 400;
+        var canvasHeight = 400;
+
+        // Create an image object (only need one instance)
+        var imageObj = new Image();
+
+// Once the image has been downloaded then set the image on all of the particles
+        imageObj.onload = function() {
+            particles.forEach(function(particle) {
+                particle.setImage(imageObj);
+            });
+        };
+
+        // Once the callback is arranged then set the source of the image
+        imageObj.src = "http://www.blog.jonnycornwell.com/wp-content/uploads/2012/07/Smoke10.png";
+
+        // A function to create a particle object.
+        function Particle(context) {
+
+            // Set the initial x and y positions
+            this.x = 0;
+            this.y = 0;
+
+            // Set the initial velocity
+            this.xVelocity = 0;
+            this.yVelocity = 0;
+
+            // Set the radius
+            this.radius = 5;
+
+            // Store the context which will be used to draw the particle
+            this.context = context;
+
+            // The function to draw the particle on the canvas.
+            this.draw = function() {
+
+                // If an image is set draw it
+                if(this.image){
+                    this.context.drawImage(this.image, this.x-128, this.y-128);
+                    // If the image is being rendered do not draw the circle so break out of the draw function
+                    return;
+                }
+                // Draw the circle as before, with the addition of using the position and the radius from this object.
+                this.context.beginPath();
+                this.context.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
+                this.context.fillStyle = "rgba(0, 255, 255, 1)";
+                this.context.fill();
+                this.context.closePath();
+            };
+
+            // Update the particle.
+            this.update = function() {
+                // Update the position of the particle with the addition of the velocity.
+                this.x += this.xVelocity;
+                this.y += this.yVelocity;
+
+                // Check if has crossed the right edge
+                if (this.x >= canvasWidth) {
+                    this.xVelocity = -this.xVelocity;
+                    this.x = canvasWidth;
+                }
+                // Check if has crossed the left edge
+                else if (this.x <= 0) {
+                    this.xVelocity = -this.xVelocity;
+                    this.x = 0;
+                }
+
+                // Check if has crossed the bottom edge
+                if (this.y >= canvasHeight) {
+                    this.yVelocity = -this.yVelocity;
+                    this.y = canvasHeight;
+                }
+
+                //bloc la montée de la fumée pour pas qu'elle touche le haut du canvas
+                if (this.y <= canvasHeight / 3) {
+                    this.yVelocity = Math.abs(this.yVelocity);
+                    this.y = canvasHeight / 3;
+                }
+            };
+
+            // A function to set the position of the particle.
+            this.setPosition = function(x, y) {
+                this.x = x;
+                this.y = y;
+            };
+
+            // Function to set the velocity.
+            this.setVelocity = function(x, y) {
+                this.xVelocity = x;
+                this.yVelocity = y;
+            };
+
+            this.setImage = function(image){
+                this.image = image;
             }
-        };
-        uniforms.alpha = {
-            type: '1f',
-            value: 1.0
-        };
-        uniforms.shift = {
-            type: '1f',
-            value: 1.6
-        };
-        uniforms.time = {
-            type: '1f',
-            value: 0
-        };
-        uniforms.speed = {
-            type: '2f',
-            value: {
-                x: 0.7,
-                y: 0.4
-            }
-        };
-
-        var fragmentSrc = [
-            "precision mediump float;",
-            "uniform vec2      resolution;",
-            "uniform float     time;",
-            "uniform float     alpha;",
-            "uniform vec2      speed;",
-            "uniform float     shift;",
-
-            "float rand(vec2 n) {",
-            "return fract(cos(dot(n, vec2(12.9898, 4.1414))) * 43758.5453);",
-            "}",
-
-            "float noise(vec2 n) {",
-            "const vec2 d = vec2(0.0, 1.0);",
-            "vec2 b = floor(n), f = smoothstep(vec2(0.0), vec2(1.0), fract(n));",
-            "return mix(mix(rand(b), rand(b + d.yx), f.x), mix(rand(b + d.xy), rand(b + d.yy), f.x), f.y);",
-            "}",
-
-            "float fbm(vec2 n) {",
-            "float total = 0.0, amplitude = 0.4;",
-            "for (int i = 0; i < 4; i++) {",
-            "total += noise(n) * amplitude;",
-            "n += n;",
-            "amplitude *= 0.6;",
-            "}",
-            "return total;",
-            "}",
-
-            "void main() {",
-
-            "const vec3 c1 = vec3(240.0/255.0, 127.0/255.0, 19.0/255.0);",
-            "const vec3 c2 = vec3(128.0/255.0, 9.0/255.0, 9.0/255.0);",
-            "const vec3 c3 = vec3(0.0, 0.0, 0.0);",
-            "const vec3 c4 = vec3(200.0/255.0, 200.0/255.0, 200.0/255.0);",
-            "const vec3 c5 = vec3(0.6);",
-            "const vec3 c6 = vec3(0.9);",
-
-            "vec2 p = gl_FragCoord.xy * 10.0 / resolution.xx;",
-            "float q = fbm(p - time * 0.1);",
-            "vec2 r = vec2(fbm(p + q + time * speed.x - p.x - p.y), fbm(p + q - time * speed.y));",
-            "vec3 c = mix(c1, c2, fbm(p + r)) + mix(c3, c4, r.x) - mix(c5, c6, r.y);",
-            "float grad = gl_FragCoord.y / resolution.y;",
-            "gl_FragColor = vec4(c * cos(shift * gl_FragCoord.y / resolution.y), 1.0);",
-            "gl_FragColor.xyz *= 0.6-grad;",
-            "float test = 0.6-grad;",
-            "float testVal = 0.5;",
-            "if(r.x > 0.5 || r.y > 0.5 || fbm(p + r) > 0.5 || test < 0.2 ){",
-            "gl_FragColor.w = 0.2;",
-            "}",
-            "}"
-        ];
-
-        var coolFilter = new PIXI.AbstractFilter(fragmentSrc, uniforms);
-
-        var bg = PIXI.Sprite.fromImage("https://s3-us-west-2.amazonaws.com/s.cdpn.io/167451/test_BG.jpg");
-        bg.width = width;
-        bg.height = height;
-        bg.shader = coolFilter;
-        stage.addChild(bg);
-
-        var count = 0;
-
-        function animate() {
-            count += 0.01;
-
-            coolFilter.uniforms.time.value = count;
-            coolFilter.syncUniforms();
-
-            renderer.render(stage);
-
-            requestAnimFrame(animate);
         }
 
-        requestAnimFrame(animate);
+// A function to generate a random number between 2 values
+        function generateRandom(min, max){
+            return Math.random() * (max - min) + min;
+        }
+
+// The canvas context if it is defined.
+        var context;
+
+// Initialise the scene and set the context if possible
+        function init() {
+            var canvas = document.getElementById('smoke');
+            if (canvas.getContext) {
+
+                // Set the context variable so it can be re-used
+                context = canvas.getContext('2d');
+
+                // Create the particles and set their initial positions and velocities
+                for(var i=0; i < particleCount; ++i){
+                    var particle = new Particle(context);
+
+                    // Set the position to be inside the canvas bounds
+                    particle.setPosition(generateRandom(0, canvasWidth), generateRandom(0, canvasHeight));
+
+                    // Set the initial velocity to be either random and either negative or positive
+                    particle.setVelocity(generateRandom(-maxVelocity, maxVelocity), generateRandom(-maxVelocity, maxVelocity));
+                    particles.push(particle);
+                }
+            }
+            else {
+                alert("Please use a modern browser");
+            }
+        }
+
+// The function to draw the scene
+        function draw() {
+            // Clear the drawing surface and fill it with a black background
+            context.fillStyle = "rgba(0, 0, 0, 0.5)";
+            context.fillRect(0, 0, 400, 400);
+
+            // Go through all of the particles and draw them.
+            particles.forEach(function(particle) {
+                particle.draw();
+            });
+        }
+
+// Update the scene
+        function update() {
+            particles.forEach(function(particle) {
+                particle.update();
+            });
+        }
+
+// Initialize the scene
+        init();
+
+// If the context is set then we can draw the scene (if not then the browser does not support canvas)
+        if (context) {
+            setInterval(function() {
+                // Update the scene befoe drawing
+                update();
+
+                // Draw the scene
+                draw();
+            }, 1000 / targetFPS);
+        }
     }
 }

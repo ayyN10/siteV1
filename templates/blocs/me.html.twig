@@ -1,5 +1,8 @@
-<section class="absoluteflex flex-col w-full h-full justify-center items-center overflow-y-scroll translate-y-full transition-all duration-300" id="section-me">
-    <img src="{{ asset('images/montagne.svg') }}" class="w-full object-cover bg-center bg-no-repeat"/>
+<section class="absoluteflex flex-col w-full h-full justify-center items-center overflow-y-scroll" id="section-me">
+    <div class="flex relative w-full h-full">
+        <img src="{{ asset('images/test-montagne-hugo.png') }}" class="w-full object-cover bg-center bg-no-repeat z-50"/>
+        <canvas {{ stimulus_controller('smoke') }} id="smoke" class="w-full h-full absolute top-0 left-0"></canvas>
+    </div>
     <div class="flex justify-center w-full">
         <div class="container max-w-2xl backdrop-blur-lg bg-white/10 rounded-2xl shadow-lg flex flex-col items-center justify-center gap-6 p-8 mt-10 text-center">
             <h1 class="text-4xl font-bold text-white">Hey, je suis Hugo 👋</h1>
