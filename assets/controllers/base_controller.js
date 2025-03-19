@@ -12,6 +12,9 @@ export default class extends Controller {
                 loader.classList.replace("opacity-100", "opacity-0");
                 setTimeout(() => {
                     document.querySelector("#section-me").classList.add("show");
+                    setTimeout(() => {
+                        document.querySelector("#smoke").classList.replace('opacity-100', 'opacity-0');
+                    }, 3000);
                 }, 2000);
             },
             { once: true }

@@ -9,7 +9,7 @@ export default class extends Controller {
         var particleCount = 30;
 
 // The maximum velocity in each direction
-        var maxVelocity = 2;
+        var maxVelocity = 5;
 
 // The target frames per second (how often do we want to update / redraw the scene)
         var targetFPS = 33;
