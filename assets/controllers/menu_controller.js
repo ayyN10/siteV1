@@ -36,13 +36,16 @@ export default class extends Controller {
         });
     }
 
-    clickMenu(items){
+    clickMenu(items) {
         items.forEach((item) => {
             item.addEventListener("click", () => {
-                items.forEach((item) => {
-                    item.classList.remove("active");
-                });
+                items.forEach((item) => item.classList.remove("active"));
                 item.classList.add("active");
+
+                // Déclencher l'animation lors de l'activation
+                if (item.timeline) {
+                    item.timeline.play();
+                }
             });
         });
     }
@@ -56,10 +59,9 @@ export default class extends Controller {
                     // Vérifie si l'élément section existe avant d'y accéder
                     const section = document.querySelector("#section-" + item.id);
                     if (section) {
-                        this.sectionActive?.classList.replace("translate-y-0", "translate-y-full"); // Cache l'ancienne section
+                        this.sectionActive?.classList.remove("show");
                         this.sectionActive = section;
                         this.sectionActive.classList.add("show"); // Affiche la nouvelle
-                        this.sectionActive.classList.replace("translate-y-full", "translate-y-0"); // Affiche la nouvelle
                     }
                 }
             });
@@ -67,8 +69,7 @@ export default class extends Controller {
         console.log(items);
     }
 
-
-    menuText(items){
+    menuText(items) {
         items.forEach((item) => {
             const textContainer = item.querySelector(".text-container");
             const textElement = textContainer?.querySelector("p");
@@ -77,7 +78,6 @@ export default class extends Controller {
                 const split = new SplitText(textElement, { type: "chars" });
                 const letters = split.chars;
 
-                // Créez une timeline pour l'animation
                 const tl = gsap.timeline({ paused: true }) // Timeline en pause par défaut
                     .set(letters, { opacity: 1 })
                     .to(letters, {
@@ -103,18 +103,23 @@ export default class extends Controller {
                     .to(letters, { rotation: 0, duration: 0.5, ease: "power1.out" }, "-=0.6")
                     .to(letters[letters.length - 1], { rotation: 0, duration: 0.1 }, "-=0.1");
 
-                // Déclencher l'animation au hover
+                // Stocker la timeline sur l'élément
+                item.timeline = tl;
+
+                // Éviter de jouer l'animation si l'élément est actif
                 item.addEventListener("mouseenter", () => {
-                    tl.play(); // Joue l'animation
+                    if (item.classList.contains("active")) return;
+                    tl.play();
                 });
 
                 item.addEventListener("mouseleave", () => {
-                    tl.reverse(); // Inverse l'animation (retour à l'état initial)
+                    if (item.classList.contains("active")) return;
+                    tl.reverse();
                 });
 
-                // Déclencher l'animation avec une classe active
+                // Jouer l'animation si actif au chargement
                 if (item.classList.contains("active")) {
-                    tl.play(); // Joue l'animation si la classe active est présente
+                    tl.play();
                 }
             }
         });

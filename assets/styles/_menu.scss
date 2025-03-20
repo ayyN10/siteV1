@@ -1,6 +1,6 @@
 @layer components {
     .btn-menu {
-        @apply flex relative justify-center items-center bg-black rounded-l-full pb-6 pl-6 transition-all duration-300;
+        @apply flex relative justify-center items-center bg-black rounded-l-full pb-6 pl-6 transition-all duration-300 cursor-pointer;
 
         > div:nth-child(2) {
             @apply flex justify-center items-center w-[80px] h-[80px] border border-white rounded-full absolute bg-black z-10;
