@@ -21,9 +21,85 @@
     opacity: 1;
 }
 
+#section-contact {
+    transform: translateY(100vh);
+    opacity: 0;
+    transition: transform 3s ease-in-out, opacity 3s ease-in-out;
+}
+
+#section-contact.show {
+    transform: translateY(0);
+    opacity: 1;
+}
 
 #section-me.show .shake {
     animation: shake 3s;
+}
+
+
+.center-circle {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #999;
+    transform: translate(-50%, -50%);
+    /* On place ce cercle au centre du parent .relative */
+    top: 50%;
+    left: 50%;
+}
+
+.circle-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.circle {
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.circle:hover {
+    transform: scale(1.1);
+}
+
+.circle img {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+}
+
+.circle-label {
+    /* Supprimer le position: absolute */
+    position: relative;
+    margin-top: 10px; /* Espace entre le cercle et le texte */
+    opacity: 0;
+    transform: translateY(20px);
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    pointer-events: none;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    transition: all 0.3s ease;
+    width: max-content;
+    max-width: 120px;
+}
+
+.circle-container:hover .circle-label {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
 }
 
 @keyframes shake {

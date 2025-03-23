@@ -39,6 +39,7 @@ export default class extends Controller {
     clickMenu(items) {
         items.forEach((item) => {
             item.addEventListener("click", () => {
+                document.querySelectorAll("section").forEach((section) => section.classList.remove("show"));
                 items.forEach((item) => item.classList.remove("active"));
                 item.classList.add("active");
 
@@ -53,8 +54,6 @@ export default class extends Controller {
     menuActive(items) {
         items.forEach((item) => {
             item.addEventListener("click", () => {
-                console.log(item);
-
                 if (item.classList.contains("active")) {
                     // Vérifie si l'élément section existe avant d'y accéder
                     const section = document.querySelector("#section-" + item.id);

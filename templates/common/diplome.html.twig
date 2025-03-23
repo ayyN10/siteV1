@@ -1,0 +1,23 @@
+<div class="flex flex-col">
+    <div class="flex items-center text-center justify-between bg-white/60 rounded-lg p-4 shadow-lg">
+        <div class="flex flex-col items-center flex-1">
+            <p class="text-2xl text-black font-semibold">{{ diplome }}</p>
+            <p class="text-black font-semibold mt-2">{{ diplomeNom }}</p>
+        </div>
+        <div class="flex flex-col items-center flex-1">
+            <p class="text-2xl text-black font-semibold">{{ ecole }}</p>
+            <p class="text-black font-semibold mt-2">{{ anne }}</p>
+        </div>
+        <div class="flex flex-col items-center flex-1">
+            {% if trophy == 'platinum' %}
+                <img src="{{ asset('images/platine.png') }}" alt="Platine Trophée" class="w-8 h-8">
+            {% elseif trophy == 'gold' %}
+                <img src="{{ asset('images/or.png') }}" alt="Or Trophée" class="w-8 h-8">
+            {% elseif trophy == 'silver' %}
+                <img src="{{ asset('images/argent.png') }}" alt="Argent Trophée" class="w-8 h-8">
+            {% elseif trophy == 'bronze' %}
+                <img src="{{ asset('images/bronze.png') }}" alt="Bronze Trophée" class="w-8 h-8">
+            {% endif %}
+        </div>
+    </div>
+</div>
