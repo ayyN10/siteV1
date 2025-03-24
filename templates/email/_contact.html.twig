@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Nouveau Message</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            text-align: center;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Nouveau message reçu</h1>
+    <p><strong>Nom :</strong> {{ Name }}</p>
+    <p><strong>Email :</strong> <a href="mailto:{{ email }}">{{ email }}</a></p>
+    <p><strong>Message :</strong></p>
+    <p>{{ message|nl2br }}</p>
+
+    <div class="footer">
+        <p>Ce message a été envoyé depuis le formulaire de contact.</p>
+    </div>
+</div>
+</body>
+</html>
