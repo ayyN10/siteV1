@@ -16,6 +16,8 @@ export default class extends Controller {
         const form = event.target.closest('form');
         const formData = new FormData(form);
 
+        console.log(formData);
+
         fetch('/contact/send', {
             method: 'POST',
             body: formData,
@@ -26,9 +28,10 @@ export default class extends Controller {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    //message
+                    this.message = 'Message envoyé avec succès';
+                    this.title
                 } else {
-                    //message
+                    this.message = 'Une erreur est survenue lors de l\'envoi du message';
                 }
             })
             .catch(error => console.error('Erreur:', error));

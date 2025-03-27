@@ -35,18 +35,16 @@ class HomeController extends AbstractController
         $data = $request->request->all();
 
         try {
-            $htmlContent = $twig->render('email/_contact.html.twig', [
+            $htmlContent = $twig->render('email/contact.html.twig', [
                 'email' => $data['email'],
                 'message' => $data['message'],
             ]);
 
-            $email = $data['email'];
-
             $email = (new Email())
-                ->from('no-reply@otidea.com')
-                ->to($email)
+                ->from('no-reply@hugo.com')
+                ->to('higozoum@gmail.com')
                 ->replyTo($data['email'])
-                ->subject("Nouveau message - {$data['formType']}")
+                ->subject($data['subject'])
                 ->html($htmlContent);
 
             $mailer->send($email);

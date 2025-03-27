@@ -26,6 +26,12 @@
             "./migrations/.gitignore"
         ]
     },
+    "php-http/discovery": {
+        "version": "1.20",
+        "recipe": {
+            "version": "1.18"
+        }
+    },
     "phpunit/phpunit": {
         "version": "9.6",
         "recipe": {
@@ -119,6 +125,12 @@
         "files": [
             "./config/packages/mailer.yaml"
         ]
+    },
+    "symfony/mailtrap-mailer": {
+        "version": "7.2",
+        "recipe": {
+            "version": "7.2"
+        }
     },
     "symfony/maker-bundle": {
         "version": "1.62",
