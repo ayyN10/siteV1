@@ -21,6 +21,17 @@
     opacity: 1;
 }
 
+#section-projects {
+    transform: translateY(100vh);
+    opacity: 0;
+    transition: transform 3s ease-in-out, opacity 3s ease-in-out;
+}
+
+#section-projects.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
 #section-contact {
     transform: translateY(100vh);
     opacity: 0;

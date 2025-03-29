@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -46,6 +47,7 @@ class HomeController extends AbstractController
                 ->replyTo($data['email'])
                 ->subject($data['subject'])
                 ->html($htmlContent);
+
 
             $mailer->send($email);
 

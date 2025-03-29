@@ -17,7 +17,7 @@
     {# templates/home.html.twig #}
     <div class="loader fixed h-full w-full z-50 opacity-100 transition-opacity bg-black">
         <div class="flex justify-center items-center h-full w-full cursor-pointer" id="button-start">
-            <img src="{{ asset('images/start.svg') }}" alt="button start" class="w-72 h-72 "/>
+            <img src="{{ asset('images/common/start.svg') }}" alt="button start" class="w-72 h-72 "/>
         </div>
     </div>
     <iframe id="xmb-iframe" style="width: 100%; height: 100%; position: fixed; z-index: 1; border: 0;" class="fluids_back z-10"
@@ -28,6 +28,7 @@
         {% include 'blocs/skills.html.twig' %}
         {% include 'blocs/contact.html.twig' %}
         {% include 'email/mail_info.html.twig' %}
+        {% include 'blocs/projects.html.twig' %}
     </section>
 {% endblock %}
 </body>
