@@ -3,10 +3,10 @@
     <div class="flex flex-col container justify-center items-center gap-6 mt-16 text-center">
         <h2 class="text-white text-3xl">MY TOP 3 PROJECTS FRONT-END</h2>
         <div class="flex flex-row w-full overflow-visible justify-center items-center gap-20">
-            <div class="card"
+            <div class="card cursor-pointer"
                  style="background-image: url('{{ asset('images/projects/test.jpg') }}') !important;">
                 <div class="absolute bottom-0 bg-gradient-to-t from-black z-10 h-full w-full flex justify-center items-end">
-                    <h3 class="text-white text-2xl mb-5">test</h3>
+                    <h3 class="text-white text-2xl mb-5 pointer-events-none">test</h3>
                 </div>
             </div>
             <div class="card w-[300px] h-[450px]"
@@ -125,3 +125,14 @@
         </div>
     </div>
 </section>
+<div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden"
+     id="modal">
+    <div class="bg-gray-900 text-white rounded-lg p-6 w-[400px] shadow-lg relative">
+        <button class="absolute top-2 right-2 text-2xl"
+                onclick="document.getElementById('modal').classList.add('hidden')">✖
+        </button>
+        <h3 class="text-2xl mb-4"></h3>
+        <img src="" alt="Project Image" class="w-full h-48 object-cover rounded mb-4">
+        <p></p>
+    </div>
+</div>

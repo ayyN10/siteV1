@@ -1,7 +1,7 @@
-import { Controller } from '@hotwired/stimulus';
-import { gsap } from "gsap";
-import { MotionPathPlugin } from "gsap/MotionPathPlugin";
-import { SplitText } from "../import/SplitText.js";
+import {Controller} from '@hotwired/stimulus';
+import {gsap} from "gsap";
+import {MotionPathPlugin} from "gsap/MotionPathPlugin";
+import {SplitText} from "../import/SplitText.js";
 
 export default class extends Controller {
     sectionActive;
@@ -17,21 +17,16 @@ export default class extends Controller {
         this.menuActive(items);
     }
 
-    showMenu(items){
+    showMenu(items) {
         items.forEach(menuBtn => {
-            menuBtn.addEventListener("mouseenter", () => {
-                console.log(menuBtn);
-                items.forEach(item => {
-                   item.classList.replace("translate-x-52", "translate-x-0");
-                });
+            if (menuBtn.classList.contains("active")) return;
+
+            menuBtn.addEventListener("mouseenter", (e) => {
+                menuBtn.classList.replace("-translate-x-32", "translate-x-0");
             });
 
-            document.querySelector(".menu").addEventListener("mouseleave", () => {
-                items.forEach(item => {
-                    if (!item.classList.contains("active")) {
-                        item.classList.replace("translate-x-0", "translate-x-52");
-                    }
-                });
+            menuBtn.addEventListener("mouseleave", (e) => {
+                menuBtn.classList.replace("translate-x-0", "-translate-x-32");
             });
         });
     }
@@ -74,33 +69,33 @@ export default class extends Controller {
             const textElement = textContainer?.querySelector("p");
 
             if (textElement) {
-                const split = new SplitText(textElement, { type: "chars" });
+                const split = new SplitText(textElement, {type: "chars"});
                 const letters = split.chars;
 
-                const tl = gsap.timeline({ paused: true }) // Timeline en pause par défaut
-                    .set(letters, { opacity: 1 })
+                const tl = gsap.timeline({paused: true}) // Timeline en pause par défaut
+                    .set(letters, {opacity: 1})
                     .to(letters, {
                         duration: 1,
                         ease: "power2.out",
                         motionPath: {
                             path: [
-                                { x: 0, y: 0 },
-                                { x: -50, y: -20 },
-                                { x: -40, y: -50 },
-                                { x: 0, y: -60 },
-                                { x: 40, y: -50 },
-                                { x: 50, y: -20 },
-                                { x: 25, y: 20 },
-                                { x: 10, y: 50 },
-                                { x: 0, y: 70 }
+                                {x: 0, y: 0},
+                                {x: -50, y: -20},
+                                {x: -40, y: -50},
+                                {x: 0, y: -60},
+                                {x: 40, y: -50},
+                                {x: 50, y: -20},
+                                {x: 25, y: 20},
+                                {x: 10, y: 50},
+                                {x: 0, y: 70}
                             ],
                             curviness: 1.5,
                             autoRotate: true
                         },
                         stagger: 0.1
                     })
-                    .to(letters, { rotation: 0, duration: 0.5, ease: "power1.out" }, "-=0.6")
-                    .to(letters[letters.length - 1], { rotation: 0, duration: 0.1 }, "-=0.1");
+                    .to(letters, {rotation: 0, duration: 0.5, ease: "power1.out"}, "-=0.6")
+                    .to(letters[letters.length - 1], {rotation: 0, duration: 0.1}, "-=0.1");
 
                 // Stocker la timeline sur l'élément
                 item.timeline = tl;

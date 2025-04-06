@@ -1,67 +1,68 @@
 @layer components {
-    .btn-menu {
-        @apply flex relative justify-center items-center bg-black rounded-l-full pb-6 pl-6 transition-all duration-300 cursor-pointer;
+  .btn-menu {
+    @apply flex relative justify-center items-center bg-black rounded-r-full pb-6 transition-all duration-300 cursor-pointer border border-white border-l-0;
 
-        > div:nth-child(2) {
-            @apply flex justify-center items-center w-[80px] h-[80px] border border-white rounded-full absolute bg-black z-10;
-        }
-        > div:nth-child(3) {
-            @apply absolute;
-
-            > p {
-                @apply text-white text-lg font-semibold;
-
-                > span {
-                    @apply text-white;
-                }
-            }
-        }
+    .image {
+      @apply flex justify-center items-center w-[80px] h-[80px] border border-white rounded-full absolute bg-black z-10;
     }
+
+    .text-container {
+      @apply absolute;
+
+      > p {
+        @apply text-white text-lg font-semibold;
+
+        > span {
+          @apply text-white;
+        }
+      }
+    }
+  }
 }
 
 .active {
-    .spinner {
-        animation: Rotate 2.4s both infinite linear;
-    }
-    .path {
-        animation: DrawLine 1.6s linear;
-        fill: none;
-        stroke: white;
-        stroke-width: 50;
-    }
+  .spinner {
+    animation: Rotate 2.4s both infinite linear;
+  }
+
+  .path {
+    animation: DrawLine 1.6s linear;
+    fill: none;
+    stroke: white;
+    stroke-width: 50;
+  }
 }
 
 .show {
-    svg
-    {
-        animation: DrawLine 3s linear;
-        fill: none;
-        stroke: white;
-        stroke-width: 4;
+  svg {
+    animation: DrawLine 3s linear;
+    fill: none;
+    stroke: white;
+    stroke-width: 4;
 
-        path{
-            animation: DrawLine 3s linear;
-            fill: none;
-            stroke: white;
-            stroke-width: 4;
-        }
+    path {
+      animation: DrawLine 3s linear;
+      fill: none;
+      stroke: white;
+      stroke-width: 4;
     }
+  }
 }
-
 
 @keyframes Rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
+
 @keyframes DrawLine {
-    0% {
-        stroke-dasharray: 0 126;
-    }
-    100% {
-        stroke-dasharray: 126 126;
-    }
+  0% {
+    stroke-dasharray: 0 126;
+  }
+  100% {
+    stroke-dasharray: 126 126;
+  }
 }

@@ -1,34 +1,37 @@
-<nav class="flex flex-col fixed top-0 right-0 mt-3 menu z-50" {{ stimulus_controller('menu') }}>
+<nav class="flex flex-col fixed top-0 left-0 mt-3 menu z-50" {{ stimulus_controller('menu') }}>
     <div class="btn-menu active translate-x-0" id="me">
         {% include 'common/spinner.html.twig' %}
-        <div>
-            <img src="{{ asset('images/common/hugo.png') }}" alt="Moi" class="w-20 h-20 object-cover relative top-[-3px]"/>
+        <div class="image">
+            <img src="{{ asset('images/common/hugo.png') }}" alt="Moi"
+                 class="w-20 h-20 object-cover relative top-[-3px]"/>
         </div>
         <div class="text-container">
             <p><span>A</span><span>B</span><span>O</span><span>U</span><span>T</span></p>
         </div>
     </div>
-    <div class="btn-menu translate-x-52" id="skills">
+    <div class="btn-menu -translate-x-32" id="skills">
         {% include 'common/spinner.html.twig' %}
-        <div>
+        <div class="image">
             <img src="{{ asset('images/common/research-paper.svg') }}" alt="Moi" class="w-12 h-12 object-cover"/>
         </div>
         <div class="text-container">
             <p><span>S</span><span>K</span><span>I</span><span>L</span><span>L</span><span>S</span></p>
         </div>
     </div>
-    <div class="btn-menu translate-x-52" id="projects">
+    <div class="btn-menu -translate-x-32" id="projects">
         {% include 'common/spinner.html.twig' %}
-        <div>
+        <div class="image">
             <img src="{{ asset('images/common/dualsense.svg') }}" alt="Moi" class="w-16 h-16 object-cover"/>
         </div>
         <div class="text-container">
-            <p><span>P</span><span>R</span><span>O</span><span>J</span><span>E</span><span>C</span><span>T</span><span>S</span></p>
+            <p>
+                <span>P</span><span>R</span><span>O</span><span>J</span><span>E</span><span>C</span><span>T</span><span>S</span>
+            </p>
         </div>
     </div>
-    <div class="btn-menu translate-x-52" id="contact">
+    <div class="btn-menu -translate-x-32" id="contact">
         {% include 'common/spinner.html.twig' %}
-        <div>
+        <div class="image">
             <img src="{{ asset('images/common/wifi.svg') }}" alt="Moi" class="w-12 h-12 object-cover"/>
         </div>
         <div class="text-container">

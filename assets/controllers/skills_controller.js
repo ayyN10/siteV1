@@ -12,40 +12,161 @@ export default class extends Controller {
     };
 
     connect() {
+        // Définition des cercles pour le Front-end
         this.createOrbit('cercle-front', [
             {
-                radius: 150,
-                rotationDuration: 10,
+                radius: 200,
+                rotationDuration: 20,
                 circles: [
-                    {label: 'HTML', image: 'html-logo.png', size: 50, bgColor: '#E44D26'},
-                    {label: 'CSS', image: 'css-logo.png', size: 50, bgColor: '#1572B6'}
+                    {
+                        label: 'HTML',
+                        image: 'images/skills/html-logo.svg',
+                        size: 100,
+                        bgColor: '#E44D26',
+                        textColor: '#fff'
+                    },
+                    {
+                        label: 'JS',
+                        image: 'images/skills/javascript-logo.svg',
+                        size: 70,
+                        bgColor: '#F7DF1E',
+                        textColor: '#000'
+                    },
+                    {
+                        label: 'VueJS',
+                        image: 'images/skills/vue-logo.svg',
+                        size: 50,
+                        bgColor: '#42B883',
+                        textColor: '#fff'
+                    },
+                    {
+                        label: 'Tailwinds',
+                        image: 'images/skills/tailwind-logo.svg',
+                        size: 70,
+                        bgColor: '#38B2AC',
+                        textColor: '#fff'
+                    },
+                    {
+                        label: 'jQuery',
+                        image: 'images/skills/jquery-logo.svg',
+                        size: 70,
+                        bgColor: '#0769AD',
+                        textColor: '#fff'
+                    },
+                    {
+                        label: 'React Native',
+                        image: 'images/skills/react-logo.svg',
+                        size: 50,
+                        bgColor: '#61DAFB',
+                        textColor: '#000'
+                    }
                 ]
             },
             {
-                radius: 250,
-                rotationDuration: 15,
+                radius: 400,
+                rotationDuration: 20,
                 circles: [
-                    {label: 'JavaScript', image: 'js-logo.png', size: 50, bgColor: '#F7DF1E'},
-                    {label: 'Vue.js', image: 'vue-logo.png', size: 50, bgColor: '#42B883'}
+                    {
+                        label: 'ThreeJS',
+                        image: 'images/skills/three-js-logo.svg',
+                        size: 50,
+                        bgColor: '#000000',
+                        textColor: '#fff'
+                    },
+                    {
+                        label: 'Bootstrap',
+                        image: 'images/skills/bootstrap-logo.svg',
+                        size: 70,
+                        bgColor: '#563d7c',
+                        textColor: '#fff'
+                    },
+                    {
+                        label: 'GSAP',
+                        image: 'images/skills/gsap-logo.png',
+                        size: 70,
+                        bgColor: '#F3F3F3',
+                        textColor: '#000'
+                    },
+                    {
+                        label: 'CSS',
+                        image: 'images/skills/css-logo.svg',
+                        size: 100,
+                        bgColor: '#264de4',
+                        textColor: '#fff'
+                    },
+                    {
+                        label: 'SCSS',
+                        image: 'images/skills/scss-logo.png',
+                        size: 100,
+                        bgColor: '#C6538C',
+                        textColor: '#fff'
+                    },
                 ]
             }
         ]);
 
+        // Définition des cercles pour le Back-end
         this.createOrbit('cercle-back', [
             {
-                radius: 150,
-                rotationDuration: 10,
+                radius: 200,
+                rotationDuration: 20,
                 circles: [
-                    {label: 'PHP', image: 'php-logo.png', size: 50, bgColor: '#777BB4'},
-                    {label: 'Symfony', image: 'symfony-logo.png', size: 50, bgColor: '#000000'}
+                    {
+                        label: 'Symfony',
+                        image: 'images/skills/symfony-logo.svg',
+                        size: 70,
+                        bgColor: '#000000',
+                        textColor: '#fff'
+                    },
+                    {
+                        label: 'XML',
+                        image: 'images/skills/xml-logo.png',
+                        size: 50,
+                        bgColor: '#F16529',
+                        textColor: '#fff'
+                    },
+                    {
+                        label: 'SQL',
+                        image: 'images/skills/sql-logo.png',
+                        size: 50,
+                        bgColor: '#336791',
+                        textColor: '#fff'
+                    },
+                    {
+                        label: 'PHP',
+                        image: 'images/skills/php-logo.svg',
+                        size: 100,
+                        bgColor: '#777BB4',
+                        textColor: '#fff'
+                    },
+
                 ]
             },
             {
-                radius: 250,
-                rotationDuration: 15,
+                radius: 400,
+                rotationDuration: 20,
                 circles: [
-                    {label: 'XML', image: 'xml-logo.png', size: 50, bgColor: '#F16529'},
-                    {label: 'API', image: 'api-logo.png', size: 50, bgColor: '#00A4E4'}
+                    {
+                        label: 'Laravel',
+                        image: 'images/skills/laravel-logo.png',
+                        size: 50,
+                        bgColor: '#FF2D20',
+                        textColor: '#fff'
+                    },
+                    {
+                        label: 'FAST API',
+                        image: 'images/skills/api-logo.png',
+                        size: 50,
+                        bgColor: '#009688',
+                        textColor: '#fff'
+                    },
+                    {
+                        label: 'Sulu',
+                        image: 'images/skills/sulu-logo.svg',
+                        size: 50,
+                        bgColor: '#000000',
+                        textColor: '#fff'
+                    }
                 ]
             }
         ]);
@@ -116,10 +237,10 @@ export default class extends Controller {
                         gsap.to(targetLabel, {fontSize: "14px", duration: 0.3});
                     }
 
-                    // Changement de couleur de fond du cercle central
+                    // Changement de couleur de fond et de texte du cercle central
                     gsap.to(centerCircle, {
                         backgroundColor: circleData.bgColor,
-                        color: '#fff', // Texte en blanc pour meilleure lisibilité
+                        color: circleData.textColor || '#fff',
                         duration: 0.3
                     });
                 });
@@ -130,7 +251,7 @@ export default class extends Controller {
                         gsap.to(label, {fontSize: "0px", duration: 0.3});
                     });
 
-                    // Retour à la couleur initiale
+                    // Retour aux couleurs initiales définies dans les valeurs du controller
                     gsap.to(centerCircle, {
                         backgroundColor: this.centerBgColorValue || '#000',
                         color: this.centerTextColorValue || '#fff',

@@ -1,10 +1,10 @@
 import {Controller} from '@hotwired/stimulus';
 
 export default class extends Controller {
+
     connect() {
         const cards = document.querySelectorAll('.card');
         const styleElement = document.querySelector('.hover');
-        let timeout;
 
         cards.forEach(card => {
             card.addEventListener('mousemove', (e) => this.handleMove(e, card, styleElement));
@@ -12,6 +12,7 @@ export default class extends Controller {
             card.addEventListener('mouseout', () => this.handleLeave(card, styleElement));
             card.addEventListener('touchend', () => this.handleLeave(card, styleElement));
             card.addEventListener('touchcancel', () => this.handleLeave(card, styleElement));
+            card.addEventListener('click', (e) => this.openModal(e, card));
         });
     }
 
@@ -46,10 +47,24 @@ export default class extends Controller {
     handleLeave(card, styleElement) {
         styleElement.innerHTML = '';
         card.style.transform = '';
+    }
 
-        clearTimeout(this.timeout);
-        this.timeout = setTimeout(() => {
-            card.classList.add('animated');
-        }, 2500);
+    openModal(event, card) {
+        // Récupération des informations du projet
+        const title = card.querySelector('h3').innerText;
+        const image = card.style.backgroundImage.replace('url("', '').replace('")', '');
+        const description = "Description du projet " + title;
+
+        // Remplissage du modal
+        this.modalTitleTarget.innerText = title;
+        this.modalImageTarget.src = image;
+        this.modalDescriptionTarget.innerText = description;
+
+        // Affichage du modal
+        this.modalTarget.classList.remove("hidden");
+    }
+
+    closeModal() {
+        this.modalTarget.classList.add("hidden");
     }
 }
