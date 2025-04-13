@@ -19,13 +19,13 @@ export default class extends Controller {
 
     showMenu(items) {
         items.forEach(menuBtn => {
-            if (menuBtn.classList.contains("active")) return;
-
             menuBtn.addEventListener("mouseenter", (e) => {
+                if (menuBtn.classList.contains("active")) return;
                 menuBtn.classList.replace("-translate-x-32", "translate-x-0");
             });
 
             menuBtn.addEventListener("mouseleave", (e) => {
+                if (menuBtn.classList.contains("active")) return;
                 menuBtn.classList.replace("translate-x-0", "-translate-x-32");
             });
         });
@@ -35,16 +35,28 @@ export default class extends Controller {
         items.forEach((item) => {
             item.addEventListener("click", () => {
                 document.querySelectorAll("section").forEach((section) => section.classList.remove("show"));
-                items.forEach((item) => item.classList.remove("active"));
+
+                items.forEach((btn) => {
+                    // Si un autre était actif, on reverse son animation
+                    if (btn !== item && btn.timeline && btn.classList.contains("active")) {
+                        btn.timeline.reverse();
+                    }
+
+                    btn.classList.remove("active");
+                    btn.classList.replace("translate-x-0", "-translate-x-32");
+                });
+
+                item.classList.replace("-translate-x-32", "translate-x-0");
                 item.classList.add("active");
 
-                // Déclencher l'animation lors de l'activation
+                // Jouer l'animation du nouvel actif
                 if (item.timeline) {
                     item.timeline.play();
                 }
             });
         });
     }
+
 
     menuActive(items) {
         items.forEach((item) => {
@@ -60,7 +72,6 @@ export default class extends Controller {
                 }
             });
         });
-        console.log(items);
     }
 
     menuText(items) {

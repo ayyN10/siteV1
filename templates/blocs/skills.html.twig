@@ -1,8 +1,9 @@
-<section class="fixed flex flex-col w-full h-full items-center overflow-y-scroll transition-all duration-300 p-8" id="section-skills" {{ stimulus_controller('skills') }}>
+<section class="fixed flex flex-col w-full h-full items-center overflow-y-scroll transition-all duration-300 p-8"
+         id="section-skills" {{ stimulus_controller('skills') }}>
     <div class="container bg-white/10 rounded-2xl shadow-lg flex flex-col items-center justify-center gap-6 p-8 mt-16 text-center">
         <h2 class="text-4xl font-bold text-white mb-8">My qualifications and skills 🏆</h2>
         <div class="flex flex-col gap-8 w-[80%]">
-           {% include 'common/diplome.html.twig' with {'diplome': 'Licence', 'diplomeNom': 'DAWIN (Développement d\'Applications Web et Informatique Network)', 'ecole': 'Université Bordeaux', 'anne': '2022', 'trophy': 'platinum'} %}
+            {% include 'common/diplome.html.twig' with {'diplome': 'Licence', 'diplomeNom': 'DAWIN (Développement d\'Applications Web et Informatique Network)', 'ecole': 'Université Bordeaux', 'anne': '2022', 'trophy': 'platinum'} %}
             {% include 'common/diplome.html.twig' with {'diplome': 'BTS', 'diplomeNom': 'BTS SIO (Services Informatiques aux Organisations)', 'ecole': 'Lycée Marie Curie', 'anne': '2018', 'trophy': 'gold'} %}
             {% include 'common/diplome.html.twig' with {'diplome': 'Bac professionel', 'diplomeNom': 'Systèmes numériques', 'ecole': 'lycée Saint-Pierre', 'anne': '2016', 'trophy': 'silver'} %}
             {% include 'common/diplome.html.twig' with {'diplome': 'BEP', 'diplomeNom': 'Systèmes numériques', 'ecole': 'lycée Saint-Pierre', 'anne': '2022', 'trophy': 'bronze'} %}
@@ -14,7 +15,7 @@
             <div class="center-circle"></div>
         </div>
 
-        <h3 class="text-3xl font-bold text-white mt-12">Back-end Stack 🚀</h3>
+        <h3 class="text-3xl font-bold text-white mt-12">Back-end Stack and Other 💻</h3>
         <div class="relative h-screen flex justify-center items-center" id="cercle-back">
             <div class="center-circle"></div>
         </div>

@@ -7,9 +7,28 @@
 @tailwind utilities;
 
 body {
-    margin: 0;
+  margin: 0;
 }
 
-.loader{
-    transition: 2s;
+.loader {
+  transition: 2s;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Fond transparent pour la zone de la scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background: white; /* Couleur de la barre de défilement */
+  border-radius: 10px; /* Arrondi des coins */
+}
+
+scrollbar {
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+scrollbar thumb {
+  background-color: white;
+  border-radius: 10px;
 }

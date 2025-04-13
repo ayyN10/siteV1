@@ -11,6 +11,8 @@ export default class extends Controller {
         centerTextColor: String
     };
 
+    activeSelection = null;
+
     connect() {
         // Définition des cercles pour le Front-end
         this.createOrbit('cercle-front', [
@@ -139,7 +141,13 @@ export default class extends Controller {
                         bgColor: '#777BB4',
                         textColor: '#fff'
                     },
-
+                    {
+                        label: 'Github',
+                        image: 'images/skills/github-logo.svg',
+                        size: 100,
+                        bgColor: '#181717',
+                        textColor: '#fff'
+                    },
                 ]
             },
             {
@@ -166,7 +174,21 @@ export default class extends Controller {
                         size: 50,
                         bgColor: '#000000',
                         textColor: '#fff'
-                    }
+                    },
+                    {
+                        label: 'Tag Manager',
+                        image: 'images/skills/tag-logo.svg',
+                        size: 50,
+                        bgColor: '#18e8e8',
+                        textColor: '#000000',
+                    },
+                    {
+                        label: 'OVH',
+                        image: 'images/skills/ovh-logo.png',
+                        size: 50,
+                        bgColor: '#2c65dc',
+                        textColor: '#fff',
+                    },
                 ]
             }
         ]);
@@ -245,18 +267,29 @@ export default class extends Controller {
                     });
                 });
 
-                circleContainer.addEventListener('mouseleave', () => {
-                    const allCenterLabels = centerCircle.querySelectorAll('.center-label');
-                    allCenterLabels.forEach(label => {
-                        gsap.to(label, {fontSize: "0px", duration: 0.3});
-                    });
+                circleContainer.addEventListener('mouseenter', () => {
+                    if (this.activeSelection) return; // Ne fait rien si un élément est sélectionné
+                    this.showLabel(centerCircle, circleData.label);
+                    this.changeCenterColor(centerCircle, circleData.bgColor, circleData.textColor);
+                });
 
-                    // Retour aux couleurs initiales définies dans les valeurs du controller
-                    gsap.to(centerCircle, {
-                        backgroundColor: this.centerBgColorValue || '#000',
-                        color: this.centerTextColorValue || '#fff',
-                        duration: 0.3
-                    });
+                circleContainer.addEventListener('mouseleave', () => {
+                    if (this.activeSelection) return; // Ne fait rien si un élément est sélectionné
+                    this.hideLabels(centerCircle);
+                    this.resetCenterColor(centerCircle);
+                });
+
+                circleContainer.addEventListener('click', () => {
+                    if (this.activeSelection === circleData.label) {
+                        // 🔁 Si on re-clique sur l’élément déjà sélectionné
+                        this.activeSelection = null;
+                        this.hideLabels(centerCircle);
+                        this.resetCenterColor(centerCircle);
+                    } else {
+                        this.activeSelection = circleData.label;
+                        this.showLabel(centerCircle, circleData.label);
+                        this.changeCenterColor(centerCircle, circleData.bgColor, circleData.textColor);
+                    }
                 });
             });
 
