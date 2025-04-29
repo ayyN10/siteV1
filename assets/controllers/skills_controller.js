@@ -267,28 +267,12 @@ export default class extends Controller {
                     });
                 });
 
-                circleContainer.addEventListener('mouseenter', () => {
-                    if (this.activeSelection) return; // Ne fait rien si un élément est sélectionné
-                    this.showLabel(centerCircle, circleData.label);
-                    this.changeCenterColor(centerCircle, circleData.bgColor, circleData.textColor);
-                });
-
-                circleContainer.addEventListener('mouseleave', () => {
-                    if (this.activeSelection) return; // Ne fait rien si un élément est sélectionné
-                    this.hideLabels(centerCircle);
-                    this.resetCenterColor(centerCircle);
-                });
-
                 circleContainer.addEventListener('click', () => {
                     if (this.activeSelection === circleData.label) {
                         // 🔁 Si on re-clique sur l’élément déjà sélectionné
                         this.activeSelection = null;
-                        this.hideLabels(centerCircle);
-                        this.resetCenterColor(centerCircle);
                     } else {
                         this.activeSelection = circleData.label;
-                        this.showLabel(centerCircle, circleData.label);
-                        this.changeCenterColor(centerCircle, circleData.bgColor, circleData.textColor);
                     }
                 });
             });
@@ -308,5 +292,10 @@ export default class extends Controller {
             centerCircle.style.backgroundColor = this.centerBgColorValue || '#000';
             centerCircle.style.color = this.centerTextColorValue || '#fff';
         });
+    }
+
+    toggleAnimation(event) {
+        const checkbox = event.currentTarget;
+        
     }
 }

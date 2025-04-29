@@ -11,11 +11,20 @@
         </div>
 
         <h3 class="text-3xl font-bold text-white mt-12">Front-end Stack 🚀</h3>
+        <div class="flex mt-5 gap-5">
+            <h4 class="text-xl font-bold text-white">Animation</h4>
+            <input id="front-toggle" type="checkbox"
+                   checked {{ stimulus_action('skills', 'toggleAnimation', 'click') }}>
+        </div>
         <div class="relative h-screen flex justify-center items-center" id="cercle-front">
             <div class="center-circle"></div>
         </div>
 
         <h3 class="text-3xl font-bold text-white mt-12">Back-end Stack and Other 💻</h3>
+        <div class="flex mt-5 gap-5">
+            <h4 class="text-xl font-bold text-white">Animation</h4>
+            <input type="checkbox" checked>
+        </div>
         <div class="relative h-screen flex justify-center items-center" id="cercle-back">
             <div class="center-circle"></div>
         </div>

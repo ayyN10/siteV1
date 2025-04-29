@@ -1,4 +1,4 @@
-import { Controller } from '@hotwired/stimulus';
+import {Controller} from '@hotwired/stimulus';
 
 export default class extends Controller {
     connect() {
@@ -11,13 +11,13 @@ export default class extends Controller {
                 loader.classList.add("pointer-events-none");
                 loader.classList.replace("opacity-100", "opacity-0");
                 setTimeout(() => {
-                    document.querySelector("#section-me").classList.add("show");
+                    document.querySelector("#section-me").classList.add("show-mont", "show");
                     setTimeout(() => {
                         document.querySelector("#smoke").classList.replace('opacity-100', 'opacity-0');
                     }, 3000);
                 }, 2000);
             },
-            { once: true }
+            {once: true}
         );
     }
 }
