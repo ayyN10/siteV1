@@ -13,97 +13,194 @@ export default class extends Controller {
 
     activeSelection = null;
 
+    frontstacks = [
+        {
+            label: 'HTML',
+            image: 'images/skills/html-logo.svg',
+            size: 100,
+            bgColor: '#E44D26',
+            textColor: '#fff',
+            trophy: 'platine.png'
+        },
+        {
+            label: 'JS',
+            image: 'images/skills/javascript-logo.svg',
+            size: 70,
+            bgColor: '#F7DF1E',
+            textColor: '#000',
+            trophy: 'platine.png'
+        },
+        {
+            label: 'VueJS',
+            image: 'images/skills/vue-logo.svg',
+            size: 50,
+            bgColor: '#42B883',
+            textColor: '#fff',
+            trophy: 'argent.png'
+        },
+        {
+            label: 'Tailwinds',
+            image: 'images/skills/tailwind-logo.svg',
+            size: 70,
+            bgColor: '#38B2AC',
+            textColor: '#fff',
+            trophy: 'or.png'
+        },
+        {
+            label: 'jQuery',
+            image: 'images/skills/jquery-logo.svg',
+            size: 70,
+            bgColor: '#0769AD',
+            textColor: '#fff',
+            trophy: 'platine.png'
+        },
+        {
+            label: 'React Native',
+            image: 'images/skills/react-logo.svg',
+            size: 50,
+            bgColor: '#61DAFB',
+            textColor: '#000',
+            trophy: 'bronze.png'
+        },
+        {
+            label: 'ThreeJS',
+            image: 'images/skills/three-js-logo.svg',
+            size: 50,
+            bgColor: '#000000',
+            textColor: '#fff',
+            trophy: 'bronze.png'
+        },
+        {
+            label: 'Bootstrap',
+            image: 'images/skills/bootstrap-logo.svg',
+            size: 70,
+            bgColor: '#563d7c',
+            textColor: '#fff',
+            trophy: 'argent.png'
+        },
+        {
+            label: 'GSAP',
+            image: 'images/skills/gsap-logo.png',
+            size: 70,
+            bgColor: '#F3F3F3',
+            textColor: '#000',
+            trophy: 'argent.png'
+        },
+        {
+            label: 'CSS',
+            image: 'images/skills/css-logo.svg',
+            size: 100,
+            bgColor: '#264de4',
+            textColor: '#fff',
+            trophy: 'platine.png'
+        },
+        {
+            label: 'SCSS',
+            image: 'images/skills/scss-logo.png',
+            size: 100,
+            bgColor: '#C6538C',
+            textColor: '#fff',
+            trophy: 'platine.png'
+        },
+    ];
+
+    backstacks = [
+        {
+            label: 'Symfony',
+            image: 'images/skills/symfony-logo.svg',
+            size: 70,
+            bgColor: '#000000',
+            textColor: '#fff',
+            trophy: 'or.png'
+        },
+        {
+            label: 'XML',
+            image: 'images/skills/xml-logo.png',
+            size: 50,
+            bgColor: '#F16529',
+            textColor: '#fff',
+            trophy: 'argent.png'
+        },
+        {
+            label: 'SQL',
+            image: 'images/skills/sql-logo.png',
+            size: 50,
+            bgColor: '#336791',
+            textColor: '#fff',
+            trophy: 'or.png'
+        },
+        {
+            label: 'PHP',
+            image: 'images/skills/php-logo.svg',
+            size: 100,
+            bgColor: '#777BB4',
+            textColor: '#fff',
+            trophy: 'platine.png'
+        },
+        {
+            label: 'Github',
+            image: 'images/skills/github-logo.svg',
+            size: 100,
+            bgColor: '#181717',
+            textColor: '#fff',
+            trophy: 'or.png'
+        },
+        {
+            label: 'Laravel',
+            image: 'images/skills/laravel-logo.png',
+            size: 50,
+            bgColor: '#FF2D20',
+            textColor: '#fff',
+            trophy: 'argent.png'
+        },
+        {
+            label: 'API Platform',
+            image: 'images/skills/api-logo.png',
+            size: 50,
+            bgColor: '#009688',
+            textColor: '#fff',
+            trophy: 'or.png'
+        },
+        {
+            label: 'Sulu',
+            image: 'images/skills/sulu-logo.svg',
+            size: 50,
+            bgColor: '#000000',
+            textColor: '#fff',
+            trophy: 'bronze.png'
+        },
+        {
+            label: 'Tag Manager',
+            image: 'images/skills/tag-logo.svg',
+            size: 50,
+            bgColor: '#18e8e8',
+            textColor: '#000000',
+            trophy: 'argent.png'
+        },
+        {
+            label: 'OVH',
+            image: 'images/skills/ovh-logo.png',
+            size: 50,
+            bgColor: '#2c65dc',
+            textColor: '#fff',
+            trophy: 'argent.png'
+        },
+    ];
+
     connect() {
+
         // Définition des cercles pour le Front-end
         this.createOrbit('cercle-front', [
             {
                 radius: 200,
                 rotationDuration: 20,
-                circles: [
-                    {
-                        label: 'HTML',
-                        image: 'images/skills/html-logo.svg',
-                        size: 100,
-                        bgColor: '#E44D26',
-                        textColor: '#fff'
-                    },
-                    {
-                        label: 'JS',
-                        image: 'images/skills/javascript-logo.svg',
-                        size: 70,
-                        bgColor: '#F7DF1E',
-                        textColor: '#000'
-                    },
-                    {
-                        label: 'VueJS',
-                        image: 'images/skills/vue-logo.svg',
-                        size: 50,
-                        bgColor: '#42B883',
-                        textColor: '#fff'
-                    },
-                    {
-                        label: 'Tailwinds',
-                        image: 'images/skills/tailwind-logo.svg',
-                        size: 70,
-                        bgColor: '#38B2AC',
-                        textColor: '#fff'
-                    },
-                    {
-                        label: 'jQuery',
-                        image: 'images/skills/jquery-logo.svg',
-                        size: 70,
-                        bgColor: '#0769AD',
-                        textColor: '#fff'
-                    },
-                    {
-                        label: 'React Native',
-                        image: 'images/skills/react-logo.svg',
-                        size: 50,
-                        bgColor: '#61DAFB',
-                        textColor: '#000'
-                    }
-                ]
+                circles: this.frontstacks.slice(0, 5)
             },
             {
                 radius: 400,
                 rotationDuration: 20,
-                circles: [
-                    {
-                        label: 'ThreeJS',
-                        image: 'images/skills/three-js-logo.svg',
-                        size: 50,
-                        bgColor: '#000000',
-                        textColor: '#fff'
-                    },
-                    {
-                        label: 'Bootstrap',
-                        image: 'images/skills/bootstrap-logo.svg',
-                        size: 70,
-                        bgColor: '#563d7c',
-                        textColor: '#fff'
-                    },
-                    {
-                        label: 'GSAP',
-                        image: 'images/skills/gsap-logo.png',
-                        size: 70,
-                        bgColor: '#F3F3F3',
-                        textColor: '#000'
-                    },
-                    {
-                        label: 'CSS',
-                        image: 'images/skills/css-logo.svg',
-                        size: 100,
-                        bgColor: '#264de4',
-                        textColor: '#fff'
-                    },
-                    {
-                        label: 'SCSS',
-                        image: 'images/skills/scss-logo.png',
-                        size: 100,
-                        bgColor: '#C6538C',
-                        textColor: '#fff'
-                    },
-                ]
+                circles: this.frontstacks.slice(5, 11)
+
             }
         ]);
 
@@ -112,87 +209,18 @@ export default class extends Controller {
             {
                 radius: 200,
                 rotationDuration: 20,
-                circles: [
-                    {
-                        label: 'Symfony',
-                        image: 'images/skills/symfony-logo.svg',
-                        size: 70,
-                        bgColor: '#000000',
-                        textColor: '#fff'
-                    },
-                    {
-                        label: 'XML',
-                        image: 'images/skills/xml-logo.png',
-                        size: 50,
-                        bgColor: '#F16529',
-                        textColor: '#fff'
-                    },
-                    {
-                        label: 'SQL',
-                        image: 'images/skills/sql-logo.png',
-                        size: 50,
-                        bgColor: '#336791',
-                        textColor: '#fff'
-                    },
-                    {
-                        label: 'PHP',
-                        image: 'images/skills/php-logo.svg',
-                        size: 100,
-                        bgColor: '#777BB4',
-                        textColor: '#fff'
-                    },
-                    {
-                        label: 'Github',
-                        image: 'images/skills/github-logo.svg',
-                        size: 100,
-                        bgColor: '#181717',
-                        textColor: '#fff'
-                    },
-                ]
+                circles: this.backstacks.slice(0, 4)
             },
             {
                 radius: 400,
                 rotationDuration: 20,
-                circles: [
-                    {
-                        label: 'Laravel',
-                        image: 'images/skills/laravel-logo.png',
-                        size: 50,
-                        bgColor: '#FF2D20',
-                        textColor: '#fff'
-                    },
-                    {
-                        label: 'FAST API',
-                        image: 'images/skills/api-logo.png',
-                        size: 50,
-                        bgColor: '#009688',
-                        textColor: '#fff'
-                    },
-                    {
-                        label: 'Sulu',
-                        image: 'images/skills/sulu-logo.svg',
-                        size: 50,
-                        bgColor: '#000000',
-                        textColor: '#fff'
-                    },
-                    {
-                        label: 'Tag Manager',
-                        image: 'images/skills/tag-logo.svg',
-                        size: 50,
-                        bgColor: '#18e8e8',
-                        textColor: '#000000',
-                    },
-                    {
-                        label: 'OVH',
-                        image: 'images/skills/ovh-logo.png',
-                        size: 50,
-                        bgColor: '#2c65dc',
-                        textColor: '#fff',
-                    },
-                ]
+                circles: this.backstacks.slice(4, 10)
             }
         ]);
 
+        this.createFrontStackBlocs();
+        this.createBackStackBlocs();
+        this.createBlocsMobilesStacks();
         this.styleCenterCircle();
     }
 
@@ -286,6 +314,151 @@ export default class extends Controller {
         });
     }
 
+    createFrontStackBlocs() {
+        const container = document.getElementById('cercle-front');
+
+        this.frontstacks.forEach(bloc => {
+            const stackDiv = document.createElement('div');
+            stackDiv.style.display = 'flex';
+            stackDiv.style.alignItems = 'center';
+            stackDiv.style.gap = '8px'; // espace entre l'image et le texte
+
+            // Style global
+            stackDiv.style.backgroundColor = '#fff';
+            stackDiv.style.color = '#000';
+            stackDiv.style.padding = '6px 12px';
+            stackDiv.style.margin = '5px';
+            stackDiv.style.borderRadius = '8px';
+            stackDiv.style.fontWeight = 'bold';
+            stackDiv.style.position = 'absolute';
+
+            // Image du trophée
+            if (bloc.trophy) {
+                const trophyImg = document.createElement('img');
+                trophyImg.src = `images/common/${bloc.trophy}`;
+                trophyImg.alt = 'trophée';
+                trophyImg.style.width = '20px';
+                trophyImg.style.height = '20px';
+                stackDiv.appendChild(trophyImg);
+            }
+
+            // Label texte
+            const labelSpan = document.createElement('span');
+            labelSpan.textContent = bloc.label;
+            stackDiv.appendChild(labelSpan);
+
+            container.appendChild(stackDiv);
+        });
+    }
+
+    createBackStackBlocs() {
+        const container = document.getElementById('cercle-back');
+
+        this.backstacks.forEach(bloc => {
+            const stackDiv = document.createElement('div');
+            stackDiv.style.display = 'flex';
+            stackDiv.style.alignItems = 'center';
+            stackDiv.style.gap = '8px';
+
+            // Style identique
+            stackDiv.style.backgroundColor = '#fff';
+            stackDiv.style.color = '#000';
+            stackDiv.style.padding = '6px 12px';
+            stackDiv.style.margin = '5px';
+            stackDiv.style.borderRadius = '8px';
+            stackDiv.style.fontWeight = 'bold';
+            stackDiv.style.position = 'absolute';
+
+            // Image du trophée
+            if (bloc.trophy) {
+                const trophyImg = document.createElement('img');
+                trophyImg.src = `images/common/${bloc.trophy}`;
+                trophyImg.alt = 'trophée';
+                trophyImg.style.width = '20px';
+                trophyImg.style.height = '20px';
+                stackDiv.appendChild(trophyImg);
+            }
+
+            // Label texte
+            const labelSpan = document.createElement('span');
+            labelSpan.textContent = bloc.label;
+            stackDiv.appendChild(labelSpan);
+
+            container.appendChild(stackDiv);
+        });
+    }
+
+    createBlocsMobilesStacks() {
+        const mobileStacksFront = document.getElementById('mobile-stacks-front');
+        const mobileStacksBack = document.getElementById('mobile-stacks-back');
+
+        this.frontstacks.forEach(bloc => {
+            const stackDiv = document.createElement('div');
+            stackDiv.style.display = 'flex';
+            stackDiv.style.alignItems = 'center';
+            stackDiv.style.gap = '8px'; // espace entre l'image et le texte
+
+            // Style global
+            stackDiv.style.backgroundColor = '#fff';
+            stackDiv.style.color = '#000';
+            stackDiv.style.padding = '6px 12px';
+            stackDiv.style.margin = '5px';
+            stackDiv.style.borderRadius = '8px';
+            stackDiv.style.fontWeight = 'bold';
+            stackDiv.style.position = 'relative';
+
+            // Image du trophée
+            if (bloc.trophy) {
+                const trophyImg = document.createElement('img');
+                trophyImg.src = `images/common/${bloc.trophy}`;
+                trophyImg.alt = 'trophée';
+                trophyImg.style.width = '20px';
+                trophyImg.style.height = '20px';
+                stackDiv.appendChild(trophyImg);
+            }
+
+            // Label texte
+            const labelSpan = document.createElement('span');
+            labelSpan.textContent = bloc.label;
+            stackDiv.appendChild(labelSpan);
+
+            mobileStacksFront.appendChild(stackDiv);
+        });
+
+        this.backstacks.forEach(bloc => {
+            const stackDiv = document.createElement('div');
+            stackDiv.style.display = 'flex';
+            stackDiv.style.alignItems = 'center';
+            stackDiv.style.gap = '8px';
+
+            // Style identique
+            stackDiv.style.backgroundColor = '#fff';
+            stackDiv.style.color = '#000';
+            stackDiv.style.padding = '6px 12px';
+            stackDiv.style.margin = '5px';
+            stackDiv.style.borderRadius = '8px';
+            stackDiv.style.fontWeight = 'bold';
+
+            // Image du trophée
+            if (bloc.trophy) {
+                const trophyImg = document.createElement('img');
+                trophyImg.src = `images/common/${bloc.trophy}`;
+                trophyImg.alt = 'trophée';
+                trophyImg.style.width = '20px';
+                trophyImg.style.height = '20px';
+                stackDiv.appendChild(trophyImg);
+            }
+
+            // Label texte
+            const labelSpan = document.createElement('span');
+            labelSpan.textContent = bloc.label;
+            stackDiv.appendChild(labelSpan);
+
+            mobileStacksBack.appendChild(stackDiv);
+        });
+    }
+
+
     styleCenterCircle() {
         const centerCircles = document.querySelectorAll('.center-circle');
         centerCircles.forEach(centerCircle => {
@@ -296,6 +469,15 @@ export default class extends Controller {
 
     toggleAnimation(event) {
         const checkbox = event.currentTarget;
-        
+
+        if (checkbox.id === 'front-toggle') {
+            if (checkbox.checked) {
+
+            } else {
+
+            }
+        } else {
+
+        }
     }
 }
