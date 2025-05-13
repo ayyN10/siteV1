@@ -319,7 +319,7 @@ export default class extends Controller {
 
         this.frontstacks.forEach(bloc => {
             const stackDiv = document.createElement('div');
-            stackDiv.style.display = 'flex';
+            stackDiv.style.display = 'none';
             stackDiv.style.alignItems = 'center';
             stackDiv.style.gap = '8px'; // espace entre l'image et le texte
 
@@ -356,7 +356,7 @@ export default class extends Controller {
 
         this.backstacks.forEach(bloc => {
             const stackDiv = document.createElement('div');
-            stackDiv.style.display = 'flex';
+            stackDiv.style.display = 'none';
             stackDiv.style.alignItems = 'center';
             stackDiv.style.gap = '8px';
 
@@ -472,12 +472,20 @@ export default class extends Controller {
 
         if (checkbox.id === 'front-toggle') {
             if (checkbox.checked) {
-
+                document.getElementById('cercle-front').style.display = 'flex';
+                document.getElementById('mobile-stacks-front').style.display = 'none';
             } else {
-
+                document.getElementById('cercle-front').style.display = 'none';
+                document.getElementById('mobile-stacks-front').style.display = 'flex';
             }
         } else {
-
+            if (checkbox.checked) {
+                document.getElementById('cercle-back').style.display = 'flex';
+                document.getElementById('mobile-stacks-back').style.display = 'none';
+            } else {
+                document.getElementById('cercle-back').style.display = 'none';
+                document.getElementById('mobile-stacks-back').style.display = 'flex';
+            }
         }
     }
 }

@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="2112151b-623e-476e-9802-262a7e391fa7" name="prod" url="http://ftpupload.net">
-        <fileTransfer rootFolder="/htdocs" host="ftpupload.net" port="21">
+      <webServer id="2112151b-623e-476e-9802-262a7e391fa7" name="prod" url="http://82.25.113.40">
+        <fileTransfer rootFolder="/home/u300068350/domains/hugodossantos.me/public_html" accessType="SFTP" host="82.25.113.40" port="65002" sshConfigId="39e2cbdd-154e-4cb2-b145-c1dfe31d5ed6" sshConfig="prod">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>

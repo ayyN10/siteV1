@@ -11,26 +11,27 @@
         </div>
 
         <h3 class="text-3xl font-bold text-white mt-12">Front-end Stack 🚀</h3>
-        <div class="flex mt-5 gap-5">
+        <div class="hidden lg:flex mt-5 gap-5">
             <h4 class="text-xl font-bold text-white">Animation</h4>
             <input id="front-toggle" type="checkbox"
                    checked {{ stimulus_action('skills', 'toggleAnimation', 'click') }}>
         </div>
-        <div class="relative h-screen flex justify-center items-center" id="cercle-front">
+        <div class="relative min-h-[860px] h-screen flex justify-center items-center animation-stacks"
+             id="cercle-front">
             <div class="center-circle z-30"></div>
         </div>
-        <div id="mobile-stacks-front" class="flex flex-wrap gap-5 mt-10">
+        <div id="mobile-stacks-front" class="flex flex-wrap gap-5 mt-10 mobile-stacks hidden justify-center">
         </div>
 
         <h3 class="text-3xl font-bold text-white mt-12">Back-end Stack and Other 💻</h3>
-        <div class="flex mt-5 gap-5">
+        <div class="hidden lg:flex mt-5 gap-5">
             <h4 class="text-xl font-bold text-white">Animation</h4>
-            <input id="back-toggle" type="checkbox" checked>
+            <input id="back-toggle" type="checkbox" checked {{ stimulus_action('skills', 'toggleAnimation', 'click') }}>
         </div>
-        <div class="relative h-screen flex justify-center items-center" id="cercle-back">
+        <div class="relative min-h-[860px] h-screen flex justify-center items-center animation-stacks" id="cercle-back">
             <div class="center-circle z-30"></div>
         </div>
-        <div id="mobile-stacks-back" class="flex flex-wrap gap-5 mt-10">
+        <div id="mobile-stacks-back" class="flex flex-wrap gap-5 mt-10 mobile-stacks hidden justify-center">
 
         </div>
     </div>

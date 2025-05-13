@@ -190,7 +190,6 @@
 
 input {
   --s: 25px; /* adjust this to control the size*/
-
   height: calc(var(--s) + var(--s) / 5);
   width: auto; /* some browsers need this */
   aspect-ratio: 2.25;
@@ -228,4 +227,16 @@ input:checked:before {
   padding: calc(var(--s) / 10 + .05px) calc(var(--s) / 10);
   --_p: 100%;
   --_i: 1;
+}
+
+.animation-stacks {
+  @media (max-width: 1024px) {
+    display: none !important;
+  }
+}
+
+.mobile-stacks {
+  @media (max-width: 1024px) {
+    display: flex !important;
+  }
 }
